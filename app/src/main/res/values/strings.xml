@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">AppToDoList</string>
+
+    <!-- Activity Titles -->
+    <string name="title_activity_detail">Details</string>
+    <string name="title_activity_edit">To edit todoNode</string>
+    <string name="title_activity_completed">Completed</string>
+
+
+    <!-- Menus -->
+    <string name="action_delete_todos">Delete todos</string>
+    <string name="action_edit_todo">Edit todoNode</string>
+    <string name="action_delete_todo">Delete</string>
+    <string name="action_save_todo">To save todoNode</string>
+    <string name="action_conclude_todo">Conclude todoNode</string>
+    <string name="action_concluded_todos">Todos concluded</string>
+
+    <!-- Other Texts -->
+    <string name="todo_title">Todo</string>
+    <string name="data_hora_todo">Data e Hora</string>
+    <string name="not_defined">Not defined</string>
+    <string name="conclusion_title">Conclusion</string>
+    <string name="action_delete_active">Delete active</string>
+    <string name="action_delete_completed">Delete completed</string>
+</resources>

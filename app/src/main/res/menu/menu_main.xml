@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.softmotions.apptodolist.activity.MainActivity">
+
+    <item
+        android:id="@+id/action_excluir_ativos"
+        android:orderInCategory="100"
+        android:title="@string/action_delete_active"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_excluir_todos"
+        android:orderInCategory="100"
+        android:title="@string/action_delete_todos"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_exibir_concluidas"
+        android:orderInCategory="100"
+        android:title="@string/action_concluded_todos"
+        app:showAsAction="never" />
+</menu>
