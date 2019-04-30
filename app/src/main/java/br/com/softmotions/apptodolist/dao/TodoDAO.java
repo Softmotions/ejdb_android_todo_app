@@ -4,6 +4,7 @@ import android.util.Log;
 
 import br.com.softmotions.apptodolist.MyApplication;
 import br.com.softmotions.apptodolist.model.TodoNode;
+import com.softmotions.ejdb2.EJDB2;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.Sort;
@@ -12,9 +13,12 @@ public class TodoDAO implements IDao<TodoNode> {
     public static final String TAG = "LogX_TodoDao";
 
     private Realm realm = MyApplication.REALM;
+    private EJDB2 ejdb2 = MyApplication.ejdb2;
 
     @Override
     public void setObject(TodoNode object) {
+        // todo BD
+
         realm.beginTransaction();
 
         TodoNode todoNode = realm.createObject(TodoNode.class, idGenerator(TodoNode.class, "id"));
