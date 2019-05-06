@@ -6,11 +6,13 @@ import br.com.softmotions.apptodolist.MyApplication;
 import br.com.softmotions.apptodolist.model.Patch;
 import br.com.softmotions.apptodolist.model.TodoNode;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.softmotions.ejdb2.EJDB2;
 import com.softmotions.ejdb2.JQL;
 import com.softmotions.ejdb2.JQLCallback;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.*;
 
@@ -54,18 +56,19 @@ public class TodoDAO implements IDao<TodoNode> {
     }
 
     @Override
-    public void equalsObject(final TodoNode objeto) {
-        Collection<Patch> patch = new LinkedList<Patch>();
-        patch.add(new Patch("replace", "todo", objeto.getTodo()));
-        patch.add(new Patch("replace", "data", objeto.getData()));
-        patch.add(new Patch("replace", "hour", objeto.getHora()));
-        patch.add(new Patch("replace", "dataConclusion", objeto.getDataConclusion()));
-        patch.add(new Patch("replace", "hourConclusion", objeto.getHoraConclusion()));
-        patch.add(new Patch("replace", "active", Boolean.toString(objeto.isActive())));
+    public void equalsObject(final TodoNode object) {
+        Collection<Patch> patchs = new LinkedList<Patch>();
+        patchs.add(new Patch("replace", "/todo", object.getTodo()));
+        patchs.add(new Patch("replace", "/data", object.getData()));
+        patchs.add(new Patch("replace", "/hour", object.getHour()));
+        patchs.add(new Patch("replace", "/dataConclusion", object.getDataConclusion()));
+        patchs.add(new Patch("replace", "/hourConclusion", object.getHourConclusion()));
+        patchs.add(new Patch("replace", "/active", Boolean.toString(object.isActive())));
         try {
-            ejdb2.patch(TABLE_NAME, mapper.writeValueAsString(patch), objeto.getId());
+            String patch = mapper.writeValueAsString(patchs);
+            ejdb2.patch(TABLE_NAME, patch, object.getId());
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            Log.d(TAG, String.valueOf(e));
         }
     }
 
@@ -80,9 +83,19 @@ public class TodoDAO implements IDao<TodoNode> {
     }
 
     @Override
-    public TodoNode getObject(int id) {
-        Collection<TodoNode> todos = getTodoNodes("/[id=:?]", Integer.toString(id));
-        return todos.iterator().next();
+    public TodoNode getObject(long id) {
+        try {
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            ejdb2.get(TABLE_NAME, id, os);
+            os.flush();
+            os.close();
+            TodoNode node = mapper.readValue(os.toString(), TodoNode.class);
+            node.setId(id);
+            return node;
+        } catch (IOException e) {
+            Log.d(TAG, String.valueOf(e));
+            return null;
+        }
     }
 
     private Collection<TodoNode> getTodoNodes(String query, String value) {

@@ -122,10 +122,10 @@ public class ConcludedActivity extends AppCompatActivity {
                                 TodoNode todoNode = new TodoNode();
                                 todoNode.setId(concludedList.get(position).getId());
                                 todoNode.setTodo(concludedList.get(position).getTodo());
-                                todoNode.setHora(concludedList.get(position).getHora());
+                                todoNode.setHour(concludedList.get(position).getHour());
                                 todoNode.setData(concludedList.get(position).getData());
                                 todoNode.setActive(true);
-                                todoNode.setHoraConclusion("Not completed");
+                                todoNode.setHourConclusion("Not completed");
                                 todoNode.setDataConclusion("Not completed");
 
                                 new TodoDAO().equalsObject(todoNode);

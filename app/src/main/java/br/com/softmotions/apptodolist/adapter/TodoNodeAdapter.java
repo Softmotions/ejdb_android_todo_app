@@ -47,13 +47,13 @@ public class TodoNodeAdapter extends RecyclerView.Adapter<TodoNodeAdapter.ViewHo
         holder.tvTodo.setText(t.getTodo());
 
         if (t.isActive()) {
-            if (!t.getData().equals("Not defined") && !t.getHora().equals("Not defined")) {
-                holder.tvDataHora.setText(t.getData() + " at " + t.getHora());
+            if (!t.getData().equals("Not defined") && !t.getHour().equals("Not defined")) {
+                holder.tvDataHora.setText(t.getData() + " at " + t.getHour());
             } else {
                 holder.tvDataHora.setText("");
             }
         } else {
-            holder.tvDataHora.setText("Completed " + t.getDataConclusion() + " at " + t.getHoraConclusion());
+            holder.tvDataHora.setText("Completed " + t.getDataConclusion() + " at " + t.getHourConclusion());
         }
 
         //Click

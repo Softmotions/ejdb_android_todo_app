@@ -45,15 +45,15 @@ public class EditActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        todoNode = new TodoDAO().getObject(intent.getIntExtra("index", 0));
+        todoNode = new TodoDAO().getObject(intent.getLongExtra("index", 0));
         Log.d(TAG, todoNode.toString());
 
         etTodo.setText(todoNode.getTodo());
         etTodo.setSelection(todoNode.getTodo().length());
 
         etHora.setFocusable(false);
-        if (!todoNode.getHora().equals("")) {
-            etHora.setText(todoNode.getHora());
+        if (!todoNode.getHour().equals("")) {
+            etHora.setText(todoNode.getHour());
         } else {
             etHora.setText(getResources().getText(R.string.not_defined));
         }
@@ -78,9 +78,9 @@ public class EditActivity extends AppCompatActivity {
         TodoNode todoNodeEdited = new TodoNode();
         todoNodeEdited.setId(todoNode.getId());
         todoNodeEdited.setTodo(etTodo.getText().toString());
-        todoNodeEdited.setHora(etHora.getText().toString());
+        todoNodeEdited.setHour(etHora.getText().toString());
         todoNodeEdited.setData(etData.getText().toString());
-        todoNodeEdited.setHoraConclusion(todoNode.getHoraConclusion());
+        todoNodeEdited.setHourConclusion(todoNode.getHourConclusion());
         todoNodeEdited.setDataConclusion(todoNode.getDataConclusion());
         todoNodeEdited.setActive(todoNode.isActive());
 

@@ -26,7 +26,7 @@ public class DetailActivity extends AppCompatActivity {
 
     public static final String TAG = "LogX_Detalhe";
 
-    int index;
+    long index;
     TodoNode todoNode;
 
     @BindView(R.id.detalhe_tv_tarefa)
@@ -54,7 +54,7 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-        index = intent.getIntExtra("index", 0);
+        index = intent.getLongExtra("index", 0);
         Log.d(TAG, "id: " + index);
 
         todoNode = new TodoDAO().getObject(index);
@@ -70,14 +70,14 @@ public class DetailActivity extends AppCompatActivity {
 
     public void updateFields() {
         tvTarefa.setText(todoNode.getTodo());
-        tvHora.setText(todoNode.getHora());
+        tvHora.setText(todoNode.getHour());
         tvData.setText(todoNode.getData());
 
         if (!todoNode.isActive()) {
             tvTitleConclusion.setVisibility(View.VISIBLE);
             cardConclusion.setVisibility(View.VISIBLE);
 
-            tvHoraConclusion.setText(todoNode.getHoraConclusion());
+            tvHoraConclusion.setText(todoNode.getHourConclusion());
             tvDataConclusion.setText(todoNode.getDataConclusion());
         }
     }
@@ -112,22 +112,22 @@ public class DetailActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.action_concluir_item:
-                SimpleDateFormat horaFormat = new SimpleDateFormat("HH:mm");
+                SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm");
                 SimpleDateFormat dataFormat = new SimpleDateFormat("dd/MM/yyyy");
                 Calendar calendar = Calendar.getInstance();
                 Date dataAtual = calendar.getTime();
 
-                String horaAtualString = horaFormat.format(dataAtual);
-                String dataAtualString = dataFormat.format(dataAtual);
+                String hourActualString = hourFormat.format(dataAtual);
+                String dataActualString = dataFormat.format(dataAtual);
 
                 TodoNode todoNodeEdited = new TodoNode();
                 todoNodeEdited.setId(todoNode.getId());
                 todoNodeEdited.setTodo(todoNode.getTodo());
-                todoNodeEdited.setHora(todoNode.getHora());
+                todoNodeEdited.setHour(todoNode.getHour());
                 todoNodeEdited.setData(todoNode.getData());
                 todoNodeEdited.setActive(false);
-                todoNodeEdited.setHoraConclusion(horaAtualString);
-                todoNodeEdited.setDataConclusion(dataAtualString);
+                todoNodeEdited.setHourConclusion(hourActualString);
+                todoNodeEdited.setDataConclusion(dataActualString);
 
                 new TodoDAO().equalsObject(todoNodeEdited);
 

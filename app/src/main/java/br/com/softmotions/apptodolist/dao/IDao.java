@@ -11,5 +11,5 @@ public interface IDao<T> {
     public void equalsObject(T objeto);
     public Collection<T> getActiveObject();
     public Collection<T> getFinishObject();
-    public T getObject(int id);
+    public T getObject(long id);
 }
