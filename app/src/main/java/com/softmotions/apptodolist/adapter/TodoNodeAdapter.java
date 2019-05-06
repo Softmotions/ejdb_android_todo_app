@@ -1,4 +1,4 @@
-package br.com.softmotions.apptodolist.adapter;
+package com.softmotions.apptodolist.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import br.com.softmotions.apptodolist.R;
-import br.com.softmotions.apptodolist.model.TodoNode;
+import com.softmotions.apptodolist.R;
+import com.softmotions.apptodolist.model.TodoNode;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

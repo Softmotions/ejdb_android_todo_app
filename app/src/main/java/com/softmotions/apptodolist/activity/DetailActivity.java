@@ -1,4 +1,4 @@
-package br.com.softmotions.apptodolist.activity;
+package com.softmotions.apptodolist.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,9 +16,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import br.com.softmotions.apptodolist.R;
-import br.com.softmotions.apptodolist.dao.TodoDAO;
-import br.com.softmotions.apptodolist.model.TodoNode;
+import com.softmotions.apptodolist.R;
+import com.softmotions.apptodolist.dao.TodoDAO;
+import com.softmotions.apptodolist.model.TodoNode;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

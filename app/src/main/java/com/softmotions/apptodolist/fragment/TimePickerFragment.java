@@ -1,4 +1,4 @@
-package br.com.softmotions.apptodolist.fragment;
+package com.softmotions.apptodolist.fragment;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -10,7 +10,7 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-import br.com.softmotions.apptodolist.R;
+import com.softmotions.apptodolist.R;
 
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
     @Override

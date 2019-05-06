@@ -1,4 +1,4 @@
-package br.com.softmotions.apptodolist.dao;
+package com.softmotions.apptodolist.dao;
 
 import java.util.Collection;
 

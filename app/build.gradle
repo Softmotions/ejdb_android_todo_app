@@ -1,17 +1,28 @@
 apply plugin: 'com.android.application'
-apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 25
     defaultConfig {
-        applicationId "br.com.matheush.apptodolist"
+        applicationId "com.softmotions.apptodolist"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        ndk {
-            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        externalNativeBuild {
+            cmake {
+                abiFilters 'arm64-v8a'//, 'armeabi-v7a'
+                targets 'ejdb2jni'
+                arguments '-DCMAKE_MAKE_PROGRAM=/usr/bin/ninja',
+                        '-DCMAKE_BUILD_TYPE=Relese',
+                        '-DBUILD_JNI_BINDING=ON',
+                        '-DENABLE_HTTP=OFF',
+                        '-DBUILD_EXAMPLES=OFF',
+                        '-DCMAKE_TOOLCHAIN_FILE=' + ndkDirectory + '/build/cmake/android.toolchain.cmake',
+                        '-DANDROID_ABI=arm64-v8a',
+                        '-DANDROID_PLATFORM=android-21',
+                        '-DANDROID_NATIVE_API_LEVEL=25'
+            }
         }
     }
     buildTypes {
@@ -20,28 +31,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['jniLibs']
+    externalNativeBuild {
+        cmake {
+            version '3.13.3'
+            path '../../ejdb/CMakeLists.txt'
         }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
 
     implementation 'com.android.support:appcompat-v7:25.1.1'
     implementation 'com.android.support:design:25.1.1'
-    implementation 'com.jakewharton:butterknife:8.5.1'
-    implementation 'com.mobsandgeeks:android-saripaar:2.0.3'
     implementation 'com.android.support:recyclerview-v7:25.1.1'
     implementation 'com.android.support:cardview-v7:25.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
-    testImplementation 'junit:junit:4.12'
+
+    implementation 'com.mobsandgeeks:android-saripaar:2.0.3'
+    implementation 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 
     implementation 'com.fasterxml.jackson.core:jackson-core:2.9.8'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.8'

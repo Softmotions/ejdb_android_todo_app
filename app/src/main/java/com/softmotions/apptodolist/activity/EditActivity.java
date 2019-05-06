@@ -1,4 +1,4 @@
-package br.com.softmotions.apptodolist.activity;
+package com.softmotions.apptodolist.activity;
 
 import android.app.DialogFragment;
 import android.content.DialogInterface;
@@ -13,11 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-import br.com.softmotions.apptodolist.R;
-import br.com.softmotions.apptodolist.dao.TodoDAO;
-import br.com.softmotions.apptodolist.fragment.DatePickerFragment;
-import br.com.softmotions.apptodolist.fragment.TimePickerFragment;
-import br.com.softmotions.apptodolist.model.TodoNode;
+import com.softmotions.apptodolist.R;
+import com.softmotions.apptodolist.dao.TodoDAO;
+import com.softmotions.apptodolist.fragment.DatePickerFragment;
+import com.softmotions.apptodolist.fragment.TimePickerFragment;
+import com.softmotions.apptodolist.model.TodoNode;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

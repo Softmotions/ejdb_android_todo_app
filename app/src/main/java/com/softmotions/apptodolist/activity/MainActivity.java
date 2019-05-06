@@ -1,4 +1,4 @@
-package br.com.softmotions.apptodolist.activity;
+package com.softmotions.apptodolist.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,8 +18,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import br.com.softmotions.apptodolist.adapter.TodoNodeAdapter;
-import br.com.softmotions.apptodolist.model.TodoNode;
+import com.softmotions.apptodolist.adapter.TodoNodeAdapter;
+import com.softmotions.apptodolist.model.TodoNode;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
@@ -30,9 +30,9 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import br.com.softmotions.apptodolist.MyApplication;
-import br.com.softmotions.apptodolist.R;
-import br.com.softmotions.apptodolist.dao.TodoDAO;
+import com.softmotions.apptodolist.MyApplication;
+import com.softmotions.apptodolist.R;
+import com.softmotions.apptodolist.dao.TodoDAO;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -218,6 +218,7 @@ public class MainActivity extends AppCompatActivity implements Validator.Validat
 
         TodoDAO todoDAO = new TodoDAO();
         todoDAO.setObject(todoNode);
+        etNewTodo.setText("");
 
         updateList();
     }

@@ -1,10 +1,10 @@
-package br.com.softmotions.apptodolist.dao;
+package com.softmotions.apptodolist.dao;
 
 import android.util.Log;
 
-import br.com.softmotions.apptodolist.MyApplication;
-import br.com.softmotions.apptodolist.model.Patch;
-import br.com.softmotions.apptodolist.model.TodoNode;
+import com.softmotions.apptodolist.MyApplication;
+import com.softmotions.apptodolist.model.Patch;
+import com.softmotions.apptodolist.model.TodoNode;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.softmotions.ejdb2.EJDB2;

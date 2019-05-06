@@ -1,4 +1,4 @@
-package br.com.softmotions.apptodolist;
+package com.softmotions.apptodolist;
 
 import org.junit.Test;
 

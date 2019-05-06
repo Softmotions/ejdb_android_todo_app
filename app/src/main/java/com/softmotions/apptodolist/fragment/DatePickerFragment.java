@@ -1,4 +1,4 @@
-package br.com.softmotions.apptodolist.fragment;
+package com.softmotions.apptodolist.fragment;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 import java.util.Calendar;
 
-import br.com.softmotions.apptodolist.R;
+import com.softmotions.apptodolist.R;
 
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     @Override

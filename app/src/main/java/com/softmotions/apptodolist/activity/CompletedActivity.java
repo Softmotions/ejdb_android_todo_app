@@ -1,4 +1,4 @@
-package br.com.softmotions.apptodolist.activity;
+package com.softmotions.apptodolist.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,10 +19,10 @@ import android.widget.Toast;
 import java.util.LinkedList;
 import java.util.List;
 
-import br.com.softmotions.apptodolist.R;
-import br.com.softmotions.apptodolist.adapter.TodoNodeAdapter;
-import br.com.softmotions.apptodolist.dao.TodoDAO;
-import br.com.softmotions.apptodolist.model.TodoNode;
+import com.softmotions.apptodolist.R;
+import com.softmotions.apptodolist.adapter.TodoNodeAdapter;
+import com.softmotions.apptodolist.dao.TodoDAO;
+import com.softmotions.apptodolist.model.TodoNode;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

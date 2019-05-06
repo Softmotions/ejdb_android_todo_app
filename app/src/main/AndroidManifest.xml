@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.softmotions.apptodolist">
+    package="com.softmotions.apptodolist">
 
     <application
-        android:name="br.com.softmotions.apptodolist.MyApplication"
+        android:name="com.softmotions.apptodolist.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="br.com.softmotions.apptodolist.activity.MainActivity"
+            android:name="com.softmotions.apptodolist.activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,15 +20,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.com.softmotions.apptodolist.activity.DetailActivity"
+            android:name="com.softmotions.apptodolist.activity.DetailActivity"
             android:label="@string/title_activity_detail"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="br.com.softmotions.apptodolist.activity.EditActivity"
+            android:name="com.softmotions.apptodolist.activity.EditActivity"
             android:label="@string/title_activity_edit"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="br.com.softmotions.apptodolist.activity.CompletedActivity"
+            android:name="com.softmotions.apptodolist.activity.CompletedActivity"
             android:label="@string/title_activity_completed"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

@@ -1,4 +1,4 @@
-package br.com.softmotions.apptodolist.model;
+package com.softmotions.apptodolist.model;
 
 public class Patch {
     private String op;
