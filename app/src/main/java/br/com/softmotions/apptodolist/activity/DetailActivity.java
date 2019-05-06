@@ -59,12 +59,13 @@ public class DetailActivity extends AppCompatActivity {
 
         todoNode = new TodoDAO().getObject(index);
 
-//        updateFields();
+        updateFields();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        todoNode = new TodoDAO().getObject(index);
         updateFields();
     }
 
