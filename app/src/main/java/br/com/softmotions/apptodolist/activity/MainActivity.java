@@ -136,23 +136,23 @@ public class MainActivity extends AppCompatActivity implements Validator.Validat
                                 new AlertDialog.Builder(MainActivity.this)
                                         .setTitle("Notice!")
                                         .setMessage("Do you want to a todoNode " + todoNodeList.get(position).getTodo() + "?")
-                                        .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 TodoNode todoNode = todoNodeList.get(position);
                                                 new TodoDAO().deleteObject(todoNode);
                                                 updateList();
                                             }
-                                        }).setNegativeButton("Não", null).show();
+                                        }).setNegativeButton("No", null).show();
                                 break;
                             case 3:
-                                SimpleDateFormat horaFormat = new SimpleDateFormat("HH:mm");
+                                SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm");
                                 SimpleDateFormat dataFormat = new SimpleDateFormat("dd/MM/yyyy");
                                 Calendar calendar = Calendar.getInstance();
-                                Date dataAtual = calendar.getTime();
+                                Date dataActual = calendar.getTime();
 
-                                String horaAtualString = horaFormat.format(dataAtual);
-                                String dataAtualString = dataFormat.format(dataAtual);
+                                String hourActualString = hourFormat.format(dataActual);
+                                String dataActualString = dataFormat.format(dataActual);
 
                                 TodoNode todoNode = new TodoNode();
                                 todoNode.setId(todoNodeList.get(position).getId());
@@ -160,8 +160,8 @@ public class MainActivity extends AppCompatActivity implements Validator.Validat
                                 todoNode.setHour(todoNodeList.get(position).getHour());
                                 todoNode.setData(todoNodeList.get(position).getData());
                                 todoNode.setActive(false);
-                                todoNode.setHourConclusion(horaAtualString);
-                                todoNode.setDataConclusion(dataAtualString);
+                                todoNode.setHourConclusion(hourActualString);
+                                todoNode.setDataConclusion(dataActualString);
 
                                 new TodoDAO().equalsObject(todoNode);
 

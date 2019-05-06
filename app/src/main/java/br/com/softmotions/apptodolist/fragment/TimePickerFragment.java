@@ -27,19 +27,19 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        EditText etHora = (EditText) getActivity().findViewById(R.id.edit_hora);
+        EditText etHour = (EditText) getActivity().findViewById(R.id.edit_hour);
 
-        String hora = String.valueOf(hourOfDay);
+        String hour = String.valueOf(hourOfDay);
         String minuto = String.valueOf(minute);
 
-        if (hora.length() == 1) {
-            hora = "0" + hora;
+        if (hour.length() == 1) {
+            hour = "0" + hour;
         }
 
         if (minuto.length() == 1) {
             minuto = "0" + minuto;
         }
 
-        etHora.setText(hora + ":" + minuto);
+        etHour.setText(hour + ":" + minuto);
     }
 }

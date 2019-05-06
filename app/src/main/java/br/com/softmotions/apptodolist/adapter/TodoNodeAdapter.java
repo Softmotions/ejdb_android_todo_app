@@ -48,12 +48,12 @@ public class TodoNodeAdapter extends RecyclerView.Adapter<TodoNodeAdapter.ViewHo
 
         if (t.isActive()) {
             if (!t.getData().equals("Not defined") && !t.getHour().equals("Not defined")) {
-                holder.tvDataHora.setText(t.getData() + " at " + t.getHour());
+                holder.tvDataHour.setText(t.getData() + " at " + t.getHour());
             } else {
-                holder.tvDataHora.setText("");
+                holder.tvDataHour.setText("");
             }
         } else {
-            holder.tvDataHora.setText("Completed " + t.getDataConclusion() + " at " + t.getHourConclusion());
+            holder.tvDataHour.setText("Completed " + t.getDataConclusion() + " at " + t.getHourConclusion());
         }
 
         //Click
@@ -89,8 +89,8 @@ public class TodoNodeAdapter extends RecyclerView.Adapter<TodoNodeAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.card_tv_todo)
         TextView tvTodo;
-        @BindView(R.id.card_tv_data_hora)
-        TextView tvDataHora;
+        @BindView(R.id.card_tv_data_hour)
+        TextView tvDataHour;
 
         public ViewHolder(View view) {
             super(view);

@@ -30,16 +30,16 @@ public class DetailActivity extends AppCompatActivity {
     TodoNode todoNode;
 
     @BindView(R.id.detalhe_tv_tarefa)
-    TextView tvTarefa;
-    @BindView(R.id.detalhe_tv_hora)
-    TextView tvHora;
+    TextView tvTodo;
+    @BindView(R.id.detail_tv_hour)
+    TextView tvHour;
     @BindView(R.id.detalhe_tv_data)
     TextView tvData;
     @BindView(R.id.detalhe_tv_titulo_conclusao)
     TextView tvTitleConclusion;
-    @BindView(R.id.detalhe_tv_hora_conclusao)
-    TextView tvHoraConclusion;
-    @BindView(R.id.detalhe_tv_data_conclusao)
+    @BindView(R.id.detail_tv_hour_completion)
+    TextView tvHourConclusion;
+    @BindView(R.id.detail_tv_data_completion)
     TextView tvDataConclusion;
     @BindView(R.id.detalhe_card_conclusao)
     CardView cardConclusion;
@@ -69,15 +69,15 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void updateFields() {
-        tvTarefa.setText(todoNode.getTodo());
-        tvHora.setText(todoNode.getHour());
+        tvTodo.setText(todoNode.getTodo());
+        tvHour.setText(todoNode.getHour());
         tvData.setText(todoNode.getData());
 
         if (!todoNode.isActive()) {
             tvTitleConclusion.setVisibility(View.VISIBLE);
             cardConclusion.setVisibility(View.VISIBLE);
 
-            tvHoraConclusion.setText(todoNode.getHourConclusion());
+            tvHourConclusion.setText(todoNode.getHourConclusion());
             tvDataConclusion.setText(todoNode.getDataConclusion());
         }
     }

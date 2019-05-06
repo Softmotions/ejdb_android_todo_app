@@ -50,7 +50,7 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/data_hora_todo"
+            android:text="@string/data_hour_todo"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
         <android.support.v7.widget.CardView
@@ -76,10 +76,10 @@
                     android:layout_marginTop="@dimen/cardview_padding_default">
 
                     <EditText
-                        android:id="@+id/edit_hora"
+                        android:id="@+id/edit_hour"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Hora"
+                        android:hint="Hour"
                         android:inputType="text" />
                 </android.support.design.widget.TextInputLayout>
 

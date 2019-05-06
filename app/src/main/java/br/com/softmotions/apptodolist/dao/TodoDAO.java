@@ -6,7 +6,6 @@ import br.com.softmotions.apptodolist.MyApplication;
 import br.com.softmotions.apptodolist.model.Patch;
 import br.com.softmotions.apptodolist.model.TodoNode;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.softmotions.ejdb2.EJDB2;
 import com.softmotions.ejdb2.JQL;

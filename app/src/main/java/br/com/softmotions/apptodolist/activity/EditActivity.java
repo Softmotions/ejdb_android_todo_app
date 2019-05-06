@@ -29,8 +29,8 @@ public class EditActivity extends AppCompatActivity {
     TodoNode todoNode;
     @BindView(R.id.edicao_et_tarefa)
     EditText etTodo;
-    @BindView(R.id.edit_hora)
-    EditText etHora;
+    @BindView(R.id.edit_hour)
+    EditText etHour;
     @BindView(R.id.edit_data)
     EditText etData;
 
@@ -51,11 +51,11 @@ public class EditActivity extends AppCompatActivity {
         etTodo.setText(todoNode.getTodo());
         etTodo.setSelection(todoNode.getTodo().length());
 
-        etHora.setFocusable(false);
+        etHour.setFocusable(false);
         if (!todoNode.getHour().equals("")) {
-            etHora.setText(todoNode.getHour());
+            etHour.setText(todoNode.getHour());
         } else {
-            etHora.setText(getResources().getText(R.string.not_defined));
+            etHour.setText(getResources().getText(R.string.not_defined));
         }
 
         etData.setFocusable(false);
@@ -78,7 +78,7 @@ public class EditActivity extends AppCompatActivity {
         TodoNode todoNodeEdited = new TodoNode();
         todoNodeEdited.setId(todoNode.getId());
         todoNodeEdited.setTodo(etTodo.getText().toString());
-        todoNodeEdited.setHour(etHora.getText().toString());
+        todoNodeEdited.setHour(etHour.getText().toString());
         todoNodeEdited.setData(etData.getText().toString());
         todoNodeEdited.setHourConclusion(todoNode.getHourConclusion());
         todoNodeEdited.setDataConclusion(todoNode.getDataConclusion());
@@ -93,12 +93,12 @@ public class EditActivity extends AppCompatActivity {
                     new AlertDialog.Builder(EditActivity.this)
                             .setTitle("Attention!")
                             .setMessage("Do you want to discard changes?")
-                            .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     finish();
                                 }
-                            }).setNegativeButton("Not", null).show();
+                            }).setNegativeButton("No", null).show();
                 }
                 return true;
             case R.id.action_salvar_item:
@@ -112,11 +112,11 @@ public class EditActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick({R.id.edit_hora, R.id.edit_data})
+    @OnClick({R.id.edit_hour, R.id.edit_data})
     public void onClick(View view) {
         DialogFragment newFragment;
         switch (view.getId()) {
-            case R.id.edit_hora:
+            case R.id.edit_hour:
                 //flame fragment time picker
                 newFragment = new TimePickerFragment();
                 newFragment.show(getFragmentManager(),"TimePicker");
