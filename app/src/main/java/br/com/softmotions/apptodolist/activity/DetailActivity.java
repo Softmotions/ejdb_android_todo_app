@@ -84,7 +84,7 @@ public class DetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_detalhe, menu);
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
         if (!todoNode.isActive()) {
             menu.removeItem(R.id.action_edit_item);
             menu.removeItem(R.id.action_finish_item);

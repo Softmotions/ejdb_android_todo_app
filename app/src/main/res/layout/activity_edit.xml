@@ -21,6 +21,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_edicao" />
+    <include layout="@layout/content_edit" />
 
 </android.support.design.widget.CoordinatorLayout>

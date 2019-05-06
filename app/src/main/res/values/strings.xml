@@ -13,7 +13,7 @@
     <string name="action_delete_todo">Delete</string>
     <string name="action_save_todo">To save todoNode</string>
     <string name="action_conclude_todo">Conclude todoNode</string>
-    <string name="action_completed_todos">Todos concluded</string>
+    <string name="action_completed_todos">Todos completed</string>
 
     <!-- Other Texts -->
     <string name="todo_title">Todo</string>

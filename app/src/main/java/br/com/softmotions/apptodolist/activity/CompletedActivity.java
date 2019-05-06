@@ -145,7 +145,7 @@ public class CompletedActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_concluidas, menu);
+        getMenuInflater().inflate(R.menu.menu_completed, menu);
         return true;
     }
 

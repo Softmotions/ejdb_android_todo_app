@@ -34,7 +34,7 @@ public class TodoNodeAdapter extends RecyclerView.Adapter<TodoNodeAdapter.ViewHo
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.content_tarefa_row, viewGroup, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.content_todo_row, viewGroup, false);
 
         return new ViewHolder(view);
     }
