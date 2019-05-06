@@ -3,117 +3,108 @@ package br.com.softmotions.apptodolist.dao;
 import android.util.Log;
 
 import br.com.softmotions.apptodolist.MyApplication;
+import br.com.softmotions.apptodolist.model.Patch;
 import br.com.softmotions.apptodolist.model.TodoNode;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.softmotions.ejdb2.EJDB2;
-import io.realm.Realm;
-import io.realm.RealmResults;
-import io.realm.Sort;
+import com.softmotions.ejdb2.JQL;
+import com.softmotions.ejdb2.JQLCallback;
+
+import java.io.IOException;
+import java.util.*;
 
 public class TodoDAO implements IDao<TodoNode> {
-    public static final String TAG = "LogX_TodoDao";
 
-    private Realm realm = MyApplication.REALM;
+    public static final String TAG = "LogX_TodoDao";
+    public static final String TABLE_NAME = "todos";
+
     private EJDB2 ejdb2 = MyApplication.ejdb2;
+    private ObjectMapper mapper = MyApplication.mapper;
 
     @Override
-    public void setObject(TodoNode object) {
-        // todo BD
-
-        realm.beginTransaction();
-
-        TodoNode todoNode = realm.createObject(TodoNode.class, idGenerator(TodoNode.class, "id"));
-
-        todoNode.setTodo(object.getTodo());
-        todoNode.setData(object.getData());
-        todoNode.setHora(object.getHora());
-        todoNode.setDataConclusion(object.getDataConclusion());
-        todoNode.setHoraConclusion(object.getHoraConclusion());
-        todoNode.setActive(object.isActive());
-
-        realm.commitTransaction();
+    public void setObject(TodoNode todo) {
+        ejdb2.put(TABLE_NAME, mapper.valueToTree(todo).toString());
     }
 
     @Override
     public void deleteObject(TodoNode object) {
-        //realm.beginTransaction();
-        final TodoNode todoNode = realm.where(TodoNode.class).equalTo("id", object.getId()).findFirst();
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                todoNode.deleteFromRealm();
-            }
-        });
+        ejdb2.del(TABLE_NAME, object.getId());
     }
 
     @Override
     public void deleteObjects() {
-        final RealmResults<TodoNode> results = realm.where(TodoNode.class).findAll();
-
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                results.deleteAllFromRealm();
-            }
-        });
+        ejdb2.removeCollection(TABLE_NAME);
     }
 
     @Override
     public void deleteObjectsActive() {
-        final RealmResults<TodoNode> results = realm.where(TodoNode.class).equalTo("active", true).findAll();
-
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                results.deleteAllFromRealm();
-            }
-        });
+        Collection<TodoNode> todos = getTodoNodes("/[active=:?]", "true");
+        for (TodoNode todo : todos) {
+            ejdb2.del(TABLE_NAME, todo.getId());
+        }
     }
 
     @Override
     public void deleteObjectsCompleted() {
-        final RealmResults<TodoNode> results = realm.where(TodoNode.class).equalTo("active", false).findAll();
-
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                results.deleteAllFromRealm();
-            }
-        });
+        Collection<TodoNode> todos = getTodoNodes("/[active=:?]", "false");
+        for (TodoNode todo : todos) {
+            ejdb2.del(TABLE_NAME, todo.getId());
+        }
     }
 
     @Override
     public void equalsObject(final TodoNode objeto) {
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                realm.copyToRealmOrUpdate(objeto);
-            }
-        });
+        Collection<Patch> patch = new LinkedList<Patch>();
+        patch.add(new Patch("replace", "todo", objeto.getTodo()));
+        patch.add(new Patch("replace", "data", objeto.getData()));
+        patch.add(new Patch("replace", "hour", objeto.getHora()));
+        patch.add(new Patch("replace", "dataConclusion", objeto.getDataConclusion()));
+        patch.add(new Patch("replace", "hourConclusion", objeto.getHoraConclusion()));
+        patch.add(new Patch("replace", "active", Boolean.toString(objeto.isActive())));
+        try {
+            ejdb2.patch(TABLE_NAME, mapper.writeValueAsString(patch), objeto.getId());
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public RealmResults<TodoNode> getActiveObject() {
-        //RealmResults<TodoNode> results = realm.where(TodoNode.class).findAllSorted("id", Sort.DESCENDING);
-        return realm.where(TodoNode.class).equalTo("active", true).findAllSorted("id", Sort.DESCENDING);
+    public Collection<TodoNode> getActiveObject() {
+        return getTodoNodes("/[active=:?]", "true");
     }
 
     @Override
-    public RealmResults<TodoNode> getFinishObject() {
-        return realm.where(TodoNode.class).equalTo("active", false).findAllSorted("id", Sort.DESCENDING);
+    public Collection<TodoNode> getFinishObject() {
+        return getTodoNodes("/[active=:?]", "false");
     }
 
     @Override
     public TodoNode getObject(int id) {
-        return realm.where(TodoNode.class).equalTo("id", id).findFirst();
+        Collection<TodoNode> todos = getTodoNodes("/[id=:?]", Integer.toString(id));
+        return todos.iterator().next();
     }
 
-    @Override
-    public int idGenerator(Class aClass, String field) {
+    private Collection<TodoNode> getTodoNodes(String query, String value) {
+        final Map<Long, String> results = new LinkedHashMap<>();
+        JQL q = ejdb2.createQuery(query, TABLE_NAME).setString(0, value);
+        q.execute(new JQLCallback() {
+            @Override
+            public long onRecord(long docId, String doc) {
+                results.put(docId, doc);
+                return 1;
+            }
+        });
+        final Collection<TodoNode> todos = new LinkedList<>();
         try {
-            return realm.where(aClass).max(field).intValue() + 1;
-        } catch (Exception e) {
+            for (Map.Entry<Long, String> entry : results.entrySet()) {
+                TodoNode todo = mapper.readValue(entry.getValue(), TodoNode.class);
+                todo.setId(entry.getKey());
+                todos.add(todo);
+            }
+        } catch (IOException e) {
             Log.d(TAG, String.valueOf(e));
-            return 0;
         }
+        return todos;
     }
 }

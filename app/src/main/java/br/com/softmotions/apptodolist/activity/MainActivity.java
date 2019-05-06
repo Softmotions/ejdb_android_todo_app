@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements Validator.Validat
                     public void onClick(DialogInterface dialog, int which) {
                         //Toast.makeText(getApplicationContext(), "Clicou " + which, Toast.LENGTH_SHORT).show();
                         Intent intent;
-                        int index = todoNodeList.get(position).getId();
+                        long index = todoNodeList.get(position).getId();
                         switch (which) {
                             case 0:
                                 intent = new Intent(MainActivity.this, DetailActivity.class);

@@ -98,7 +98,7 @@ public class ConcludedActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //Toast.makeText(getApplicationContext(), "Clicou " + which, Toast.LENGTH_SHORT).show();
                         Intent intent;
-                        int index = concludedList.get(position).getId();
+                        long index = concludedList.get(position).getId();
                         switch (which) {
                             case 0:
                                 intent = new Intent(ConcludedActivity.this, DetailActivity.class);

@@ -1,11 +1,9 @@
 package br.com.softmotions.apptodolist.model;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class TodoNode extends RealmObject {
-    @PrimaryKey
-    private int id;
+public class TodoNode{
+    private long id;
     private String todo;
     private String data;
     private String hora;
@@ -16,21 +14,12 @@ public class TodoNode extends RealmObject {
     public TodoNode() {
     }
 
-    public TodoNode(int id, String todo, String data, String hora, String dataConclusion, String horaConclusion, boolean active) {
-        this.id = id;
-        this.todo = todo;
-        this.data = data;
-        this.hora = hora;
-        this.dataConclusion = dataConclusion;
-        this.horaConclusion = horaConclusion;
-        this.active = active;
-    }
-
-    public int getId() {
+    @JsonIgnore
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -90,7 +79,7 @@ public class TodoNode extends RealmObject {
                 ", data='" + data + '\'' +
                 ", hora='" + hora + '\'' +
                 ", dataConclusion='" + dataConclusion + '\'' +
-                ", horaConclusion='" + horaConclusion + '\'' +
+                ", hourConclusion='" + horaConclusion + '\'' +
                 ", active=" + active +
                 '}';
     }
@@ -115,7 +104,7 @@ public class TodoNode extends RealmObject {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = (int) id;
         result = 31 * result + (todo != null ? todo.hashCode() : 0);
         result = 31 * result + (data != null ? data.hashCode() : 0);
         result = 31 * result + (hora != null ? hora.hashCode() : 0);
