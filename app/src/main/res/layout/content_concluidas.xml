@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.softmotions.apptodolist.activity.ConcludedActivity"
-    tools:showIn="@layout/activity_concluidas">
+    tools:context="br.com.softmotions.apptodolist.activity.CompletedActivity"
+    tools:showIn="@layout/activity_completed">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/concluidas_rv_concluidas"
+        android:id="@+id/completed_rv_completed"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />

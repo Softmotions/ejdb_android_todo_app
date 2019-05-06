@@ -4,20 +4,20 @@
     tools:context="br.com.softmotions.apptodolist.activity.MainActivity">
 
     <item
-        android:id="@+id/action_excluir_ativos"
+        android:id="@+id/action_delete_assets"
         android:orderInCategory="100"
         android:title="@string/action_delete_active"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_excluir_todos"
+        android:id="@+id/action_delete_todos"
         android:orderInCategory="100"
         android:title="@string/action_delete_todos"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_exibir_concluidas"
+        android:id="@+id/action_delete_completed"
         android:orderInCategory="100"
-        android:title="@string/action_concluded_todos"
+        android:title="@string/action_completed_todos"
         app:showAsAction="never" />
 </menu>

@@ -28,7 +28,7 @@
             android:label="@string/title_activity_edit"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="br.com.softmotions.apptodolist.activity.ConcludedActivity"
+            android:name="br.com.softmotions.apptodolist.activity.CompletedActivity"
             android:label="@string/title_activity_completed"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

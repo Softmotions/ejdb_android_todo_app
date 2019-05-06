@@ -4,7 +4,7 @@
     tools:context="br.com.softmotions.apptodolist.activity.MainActivity">
 
     <item
-        android:id="@+id/action_excluir_concluidas"
+        android:id="@+id/action_delete_completed"
         android:orderInCategory="100"
         android:title="@string/action_delete_completed"
         app:showAsAction="never" />

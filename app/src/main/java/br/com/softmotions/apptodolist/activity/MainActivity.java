@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements Validator.Validat
     }
 
     public void updateList() {
-        //RealmResults<TodoNode> tarefas = MyApplication.REALM.where(TodoNode.class).findAllSorted("id", Sort.DESCENDING);
         todoNodeList.clear();
         todoNodeList.addAll(new TodoDAO().getActiveObject());
         todoNodeAdapter.notifyDataSetChanged();
@@ -118,7 +117,6 @@ public class MainActivity extends AppCompatActivity implements Validator.Validat
                 builder.setItems(opcoes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //Toast.makeText(getApplicationContext(), "Clicou " + which, Toast.LENGTH_SHORT).show();
                         Intent intent;
                         long index = todoNodeList.get(position).getId();
                         switch (which) {
@@ -181,32 +179,27 @@ public class MainActivity extends AppCompatActivity implements Validator.Validat
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         switch (id) {
-            case R.id.action_excluir_ativos:
+            case R.id.action_delete_assets:
                 new TodoDAO().deleteObjectsActive();
                 Toast.makeText(getApplicationContext(), "All excluded todo!", Toast.LENGTH_SHORT).show();
                 updateList();
                 return true;
-            case R.id.action_excluir_todos:
+            case R.id.action_delete_todos:
                 new TodoDAO().deleteObjects();
                 Toast.makeText(getApplicationContext(), "All active todo deleted!", Toast.LENGTH_SHORT).show();
                 updateList();
                 return true;
-            case R.id.action_exibir_concluidas:
-                startActivity(new Intent(MainActivity.this, ConcludedActivity.class));
+            case R.id.action_delete_completed:
+                startActivity(new Intent(MainActivity.this, CompletedActivity.class));
                 return true;
         }
 
@@ -235,7 +228,7 @@ public class MainActivity extends AppCompatActivity implements Validator.Validat
             View view = error.getView();
             String message = error.getCollatedErrorMessage(this);
 
-            // Display error messages ;)
+            // Display error messages
             if (view instanceof EditText) {
                 ((EditText) view).setError(message);
             } else {

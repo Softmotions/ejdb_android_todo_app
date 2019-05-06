@@ -24,7 +24,7 @@ import butterknife.OnClick;
 
 public class EditActivity extends AppCompatActivity {
 
-    public static final String TAG = "LogX_Edicao";
+    public static final String TAG = "LogX_Edit";
 
     TodoNode todoNode;
     @BindView(R.id.edicao_et_tarefa)

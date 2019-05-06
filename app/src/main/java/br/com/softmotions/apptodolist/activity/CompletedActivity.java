@@ -26,45 +26,44 @@ import br.com.softmotions.apptodolist.model.TodoNode;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ConcludedActivity extends AppCompatActivity {
+public class CompletedActivity extends AppCompatActivity {
 
-    private static final String TAG = "LogX_Concluded";
-    @BindView(R.id.concluidas_rv_concluidas)
-    RecyclerView rvConcluded;
+    private static final String TAG = "LogX_Completed";
+    @BindView(R.id.completed_rv_completed)
+    RecyclerView rvCompleted;
 
     private TodoNodeAdapter todoNodeAdapter;
-    private List<TodoNode> concludedList;
+    private List<TodoNode> completedList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_concluidas);
+        setContentView(R.layout.activity_completed);
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        concludedList = new LinkedList<>();
+        completedList = new LinkedList<>();
 
-        rvConcluded.setLayoutManager(new LinearLayoutManager(this));
-        rvConcluded.addItemDecoration(new DividerItemDecoration(ConcludedActivity.this, DividerItemDecoration.VERTICAL));
-        rvConcluded.setItemAnimator(new DefaultItemAnimator());
-        rvConcluded.setHasFixedSize(true);
+        rvCompleted.setLayoutManager(new LinearLayoutManager(this));
+        rvCompleted.addItemDecoration(new DividerItemDecoration(CompletedActivity.this, DividerItemDecoration.VERTICAL));
+        rvCompleted.setItemAnimator(new DefaultItemAnimator());
+        rvCompleted.setHasFixedSize(true);
 
-        todoNodeAdapter = new TodoNodeAdapter(ConcludedActivity.this, concludedList, onItemClickListener(), onItemLongClickListener());
-        rvConcluded.setAdapter(todoNodeAdapter);
+        todoNodeAdapter = new TodoNodeAdapter(CompletedActivity.this, completedList, onItemClickListener(), onItemLongClickListener());
+        rvCompleted.setAdapter(todoNodeAdapter);
 
 
     }
 
     public void atualizaLista() {
-        //RealmResults<TodoNode> tarefas = MyApplication.REALM.where(TodoNode.class).findAllSorted("id", Sort.DESCENDING);
-        concludedList.clear();
-        concludedList.addAll(new TodoDAO().getFinishObject());
+        completedList.clear();
+        completedList.addAll(new TodoDAO().getFinishObject());
         todoNodeAdapter.notifyDataSetChanged();
 
-        Log.d(TAG, "List todos: " + concludedList.toString());
+        Log.d(TAG, "List todos: " + completedList.toString());
     }
 
     @Override
@@ -78,8 +77,8 @@ public class ConcludedActivity extends AppCompatActivity {
         return new TodoNodeAdapter.OnItemClickListener() {
             @Override
             public void onItemClicked(View view, int position) {
-                Intent intent = new Intent(ConcludedActivity.this, DetailActivity.class);
-                intent.putExtra("index", concludedList.get(position).getId());
+                Intent intent = new Intent(CompletedActivity.this, DetailActivity.class);
+                intent.putExtra("index", completedList.get(position).getId());
                 startActivity(intent);
             }
         };
@@ -91,28 +90,28 @@ public class ConcludedActivity extends AppCompatActivity {
             public boolean onItemLongClicked(final int position) {
                 CharSequence[] options = new CharSequence[]{"View", "Delete", "Reactive"};
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(ConcludedActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(CompletedActivity.this);
                 builder.setTitle("Options todoNode");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Toast.makeText(getApplicationContext(), "Clicou " + which, Toast.LENGTH_SHORT).show();
                         Intent intent;
-                        long index = concludedList.get(position).getId();
+                        long index = completedList.get(position).getId();
                         switch (which) {
                             case 0:
-                                intent = new Intent(ConcludedActivity.this, DetailActivity.class);
+                                intent = new Intent(CompletedActivity.this, DetailActivity.class);
                                 intent.putExtra("index", index);
                                 startActivity(intent);
                                 break;
                             case 1:
-                                new AlertDialog.Builder(ConcludedActivity.this)
+                                new AlertDialog.Builder(CompletedActivity.this)
                                         .setTitle("Notice!")
-                                        .setMessage("Do you want to delete todoNode " + concludedList.get(position).getTodo() + "?")
+                                        .setMessage("Do you want to delete todoNode " + completedList.get(position).getTodo() + "?")
                                         .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
-                                                TodoNode todoNode = concludedList.get(position);
+                                                TodoNode todoNode = completedList.get(position);
                                                 new TodoDAO().deleteObject(todoNode);
                                                 atualizaLista();
                                             }
@@ -120,10 +119,10 @@ public class ConcludedActivity extends AppCompatActivity {
                                 break;
                             case 2:
                                 TodoNode todoNode = new TodoNode();
-                                todoNode.setId(concludedList.get(position).getId());
-                                todoNode.setTodo(concludedList.get(position).getTodo());
-                                todoNode.setHour(concludedList.get(position).getHour());
-                                todoNode.setData(concludedList.get(position).getData());
+                                todoNode.setId(completedList.get(position).getId());
+                                todoNode.setTodo(completedList.get(position).getTodo());
+                                todoNode.setHour(completedList.get(position).getHour());
+                                todoNode.setData(completedList.get(position).getData());
                                 todoNode.setActive(true);
                                 todoNode.setHourConclusion("Not completed");
                                 todoNode.setDataConclusion("Not completed");
@@ -156,9 +155,9 @@ public class ConcludedActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 return true;
-            case R.id.action_excluir_concluidas:
+            case R.id.action_delete_completed:
                 new TodoDAO().deleteObjectsCompleted();
-                if (concludedList.size() > 0)
+                if (completedList.size() > 0)
                     Toast.makeText(getApplicationContext(), "All completed todo deleted!", Toast.LENGTH_SHORT).show();
                 atualizaLista();
                 return true;

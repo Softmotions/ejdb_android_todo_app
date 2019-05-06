@@ -8,7 +8,7 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="br.com.softmotions.apptodolist.activity.DetailActivity"
-    tools:showIn="@layout/activity_detalhe">
+    tools:showIn="@layout/activity_detail">
 
     <TextView
         android:layout_width="wrap_content"

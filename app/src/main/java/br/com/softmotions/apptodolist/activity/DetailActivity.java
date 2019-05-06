@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
 
 public class DetailActivity extends AppCompatActivity {
 
-    public static final String TAG = "LogX_Detalhe";
+    public static final String TAG = "LogX_Detail";
 
     long index;
     TodoNode todoNode;
@@ -47,7 +47,7 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalhe);
+        setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,10 +86,10 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_detalhe, menu);
         if (!todoNode.isActive()) {
-            menu.removeItem(R.id.action_editar_item);
-            menu.removeItem(R.id.action_concluir_item);
+            menu.removeItem(R.id.action_edit_item);
+            menu.removeItem(R.id.action_finish_item);
 
-            MenuItem item = menu.findItem(R.id.action_excluir_item);
+            MenuItem item = menu.findItem(R.id.action_delete_item);
             item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS);
         }
         return true;
@@ -101,17 +101,17 @@ public class DetailActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 return true;
-            case R.id.action_editar_item:
+            case R.id.action_edit_item:
                 Intent intent = new Intent(DetailActivity.this, EditActivity.class);
                 intent.putExtra("index", todoNode.getId());
                 startActivity(intent);
                 return true;
-            case R.id.action_excluir_item:
+            case R.id.action_delete_item:
                 new TodoDAO().deleteObject(todoNode);
-                Toast.makeText(getApplicationContext(), "TodoNode successfully excluded!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "TodoNode successfully deleted!", Toast.LENGTH_SHORT).show();
                 finish();
                 return true;
-            case R.id.action_concluir_item:
+            case R.id.action_finish_item:
                 SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm");
                 SimpleDateFormat dataFormat = new SimpleDateFormat("dd/MM/yyyy");
                 Calendar calendar = Calendar.getInstance();
