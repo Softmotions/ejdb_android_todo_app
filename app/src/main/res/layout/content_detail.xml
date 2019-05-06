@@ -28,10 +28,10 @@
         android:layout_marginTop="@dimen/cardview_vertical_margin">
         <TextView
             android:layout_margin="@dimen/cardview_padding_default"
-            android:id="@+id/detalhe_tv_tarefa"
+            android:id="@+id/detail_tv_todo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Exemplo todoNode"
+            android:text="Example todoNode"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
     </android.support.v7.widget.CardView>
 
@@ -69,7 +69,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
-                android:id="@+id/detalhe_tv_data"
+                android:id="@+id/detail_tv_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/cardview_padding_default"
@@ -79,7 +79,7 @@
     </android.support.v7.widget.CardView>
 
     <TextView
-        android:id="@+id/detalhe_tv_titulo_conclusao"
+        android:id="@+id/detail_tv_title_conclusion"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
         android:visibility="gone"/>
 
     <android.support.v7.widget.CardView
-        android:id="@+id/detalhe_card_conclusao"
+        android:id="@+id/detail_card_conclusion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -106,7 +106,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/detail_tv_hour_completion"
+                android:id="@+id/detail_tv_hour_conclusion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/cardview_padding_default"
@@ -116,7 +116,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
-                android:id="@+id/detail_tv_data_completion"
+                android:id="@+id/detail_tv_data_conclusion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/cardview_padding_default"

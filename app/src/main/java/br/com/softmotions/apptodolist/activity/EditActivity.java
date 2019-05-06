@@ -27,7 +27,7 @@ public class EditActivity extends AppCompatActivity {
     public static final String TAG = "LogX_Edit";
 
     TodoNode todoNode;
-    @BindView(R.id.edicao_et_tarefa)
+    @BindView(R.id.edit_todo)
     EditText etTodo;
     @BindView(R.id.edit_hour)
     EditText etHour;
@@ -101,7 +101,7 @@ public class EditActivity extends AppCompatActivity {
                             }).setNegativeButton("No", null).show();
                 }
                 return true;
-            case R.id.action_salvar_item:
+            case R.id.action_save_item:
                 //saves item
                 Log.d(TAG, "TodoNode edited: " + todoNodeEdited.toString());
                 new TodoDAO().equalsObject(todoNodeEdited);

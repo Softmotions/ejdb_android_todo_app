@@ -29,19 +29,19 @@ public class DetailActivity extends AppCompatActivity {
     long index;
     TodoNode todoNode;
 
-    @BindView(R.id.detalhe_tv_tarefa)
+    @BindView(R.id.detail_tv_todo)
     TextView tvTodo;
     @BindView(R.id.detail_tv_hour)
     TextView tvHour;
-    @BindView(R.id.detalhe_tv_data)
+    @BindView(R.id.detail_tv_data)
     TextView tvData;
-    @BindView(R.id.detalhe_tv_titulo_conclusao)
+    @BindView(R.id.detail_tv_title_conclusion)
     TextView tvTitleConclusion;
-    @BindView(R.id.detail_tv_hour_completion)
+    @BindView(R.id.detail_tv_hour_conclusion)
     TextView tvHourConclusion;
-    @BindView(R.id.detail_tv_data_completion)
+    @BindView(R.id.detail_tv_data_conclusion)
     TextView tvDataConclusion;
-    @BindView(R.id.detalhe_card_conclusao)
+    @BindView(R.id.detail_card_conclusion)
     CardView cardConclusion;
 
     @Override
@@ -59,7 +59,7 @@ public class DetailActivity extends AppCompatActivity {
 
         todoNode = new TodoDAO().getObject(index);
 
-        updateFields();
+//        updateFields();
     }
 
     @Override
@@ -115,10 +115,10 @@ public class DetailActivity extends AppCompatActivity {
                 SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm");
                 SimpleDateFormat dataFormat = new SimpleDateFormat("dd/MM/yyyy");
                 Calendar calendar = Calendar.getInstance();
-                Date dataAtual = calendar.getTime();
+                Date dataActual = calendar.getTime();
 
-                String hourActualString = hourFormat.format(dataAtual);
-                String dataActualString = dataFormat.format(dataAtual);
+                String hourActualString = hourFormat.format(dataActual);
+                String dataActualString = dataFormat.format(dataActual);
 
                 TodoNode todoNodeEdited = new TodoNode();
                 todoNodeEdited.setId(todoNode.getId());
