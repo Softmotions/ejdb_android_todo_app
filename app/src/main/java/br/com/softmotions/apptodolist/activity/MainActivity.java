@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements Validator.Validat
         return new TodoNodeAdapter.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClicked(final int position) {
-                CharSequence opcoes[] = new CharSequence[] {"Visualizar", "Change", "Delete", "Conclude"};
+                CharSequence opcoes[] = new CharSequence[] {"View", "Change", "Delete", "Completed"};
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("Options todoNode");
