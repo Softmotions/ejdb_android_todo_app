@@ -80,8 +80,8 @@ public class EditActivity extends AppCompatActivity {
         todoNodeEdited.setTodo(etTodo.getText().toString());
         todoNodeEdited.setHour(etHour.getText().toString());
         todoNodeEdited.setData(etData.getText().toString());
-        todoNodeEdited.setHourConclusion(todoNode.getHourConclusion());
-        todoNodeEdited.setDataConclusion(todoNode.getDataConclusion());
+        todoNodeEdited.setHourCompletion(todoNode.getHourCompletion());
+        todoNodeEdited.setDataCompletion(todoNode.getDataCompletion());
         todoNodeEdited.setActive(todoNode.isActive());
 
         switch (item.getItemId()) {

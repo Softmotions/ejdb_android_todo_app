@@ -53,7 +53,7 @@ public class TodoNodeAdapter extends RecyclerView.Adapter<TodoNodeAdapter.ViewHo
                 holder.tvDataHour.setText("");
             }
         } else {
-            holder.tvDataHour.setText("Completed " + t.getDataConclusion() + " at " + t.getHourConclusion());
+            holder.tvDataHour.setText("Completed " + t.getDataCompletion() + " at " + t.getHourCompletion());
         }
 
         //Click

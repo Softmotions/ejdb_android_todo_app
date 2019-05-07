@@ -158,8 +158,8 @@ public class MainActivity extends AppCompatActivity implements Validator.Validat
                                 todoNode.setHour(todoNodeList.get(position).getHour());
                                 todoNode.setData(todoNodeList.get(position).getData());
                                 todoNode.setActive(false);
-                                todoNode.setHourConclusion(hourActualString);
-                                todoNode.setDataConclusion(dataActualString);
+                                todoNode.setHourCompletion(hourActualString);
+                                todoNode.setDataCompletion(dataActualString);
 
                                 new TodoDAO().equalsObject(todoNode);
 
@@ -212,8 +212,8 @@ public class MainActivity extends AppCompatActivity implements Validator.Validat
         todoNode.setTodo(etNewTodo.getText().toString());
         todoNode.setData("Not defined");
         todoNode.setHour("Not defined");
-        todoNode.setDataConclusion("Not completed");
-        todoNode.setHourConclusion("Not completed");
+        todoNode.setDataCompletion("Not completed");
+        todoNode.setHourCompletion("Not completed");
         todoNode.setActive(true);
 
         TodoDAO todoDAO = new TodoDAO();

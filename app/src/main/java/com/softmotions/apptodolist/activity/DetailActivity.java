@@ -35,14 +35,14 @@ public class DetailActivity extends AppCompatActivity {
     TextView tvHour;
     @BindView(R.id.detail_tv_data)
     TextView tvData;
-    @BindView(R.id.detail_tv_title_conclusion)
-    TextView tvTitleConclusion;
-    @BindView(R.id.detail_tv_hour_conclusion)
-    TextView tvHourConclusion;
-    @BindView(R.id.detail_tv_data_conclusion)
-    TextView tvDataConclusion;
-    @BindView(R.id.detail_card_conclusion)
-    CardView cardConclusion;
+    @BindView(R.id.detail_tv_title_completion)
+    TextView tvTitleCompletion;
+    @BindView(R.id.detail_tv_hour_completion)
+    TextView tvHourCompletion;
+    @BindView(R.id.detail_tv_data_completion)
+    TextView tvDataCompletion;
+    @BindView(R.id.detail_card_completion)
+    CardView cardCompletion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,11 +75,11 @@ public class DetailActivity extends AppCompatActivity {
         tvData.setText(todoNode.getData());
 
         if (!todoNode.isActive()) {
-            tvTitleConclusion.setVisibility(View.VISIBLE);
-            cardConclusion.setVisibility(View.VISIBLE);
+            tvTitleCompletion.setVisibility(View.VISIBLE);
+            cardCompletion.setVisibility(View.VISIBLE);
 
-            tvHourConclusion.setText(todoNode.getHourConclusion());
-            tvDataConclusion.setText(todoNode.getDataConclusion());
+            tvHourCompletion.setText(todoNode.getHourCompletion());
+            tvDataCompletion.setText(todoNode.getDataCompletion());
         }
     }
 
@@ -127,8 +127,8 @@ public class DetailActivity extends AppCompatActivity {
                 todoNodeEdited.setHour(todoNode.getHour());
                 todoNodeEdited.setData(todoNode.getData());
                 todoNodeEdited.setActive(false);
-                todoNodeEdited.setHourConclusion(hourActualString);
-                todoNodeEdited.setDataConclusion(dataActualString);
+                todoNodeEdited.setHourCompletion(hourActualString);
+                todoNodeEdited.setDataCompletion(dataActualString);
 
                 new TodoDAO().equalsObject(todoNodeEdited);
 

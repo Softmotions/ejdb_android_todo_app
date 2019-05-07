@@ -19,7 +19,7 @@
     <string name="todo_title">Todo</string>
     <string name="data_hour_todo">Data and Hour</string>
     <string name="not_defined">Not defined</string>
-    <string name="conclusion_title">Conclusion</string>
+    <string name="completion_title">Completion</string>
     <string name="action_delete_active">Delete active</string>
     <string name="action_delete_completed">Delete completed</string>
 </resources>

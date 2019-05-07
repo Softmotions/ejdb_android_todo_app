@@ -60,8 +60,8 @@ public class TodoDAO implements IDao<TodoNode> {
         patchs.add(new Patch("replace", "/todo", object.getTodo()));
         patchs.add(new Patch("replace", "/data", object.getData()));
         patchs.add(new Patch("replace", "/hour", object.getHour()));
-        patchs.add(new Patch("replace", "/dataConclusion", object.getDataConclusion()));
-        patchs.add(new Patch("replace", "/hourConclusion", object.getHourConclusion()));
+        patchs.add(new Patch("replace", "/dataCompletion", object.getDataCompletion()));
+        patchs.add(new Patch("replace", "/hourCompletion", object.getHourCompletion()));
         patchs.add(new Patch("replace", "/active", Boolean.toString(object.isActive())));
         try {
             String patch = mapper.writeValueAsString(patchs);

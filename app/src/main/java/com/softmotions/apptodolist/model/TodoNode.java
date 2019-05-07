@@ -7,8 +7,8 @@ public class TodoNode{
     private String todo;
     private String data;
     private String hour;
-    private String dataConclusion;
-    private String hourConclusion;
+    private String dataCompletion;
+    private String hourCompletion;
     private boolean active;
 
     public TodoNode() {
@@ -47,20 +47,20 @@ public class TodoNode{
         this.hour = hour;
     }
 
-    public String getDataConclusion() {
-        return dataConclusion;
+    public String getDataCompletion() {
+        return dataCompletion;
     }
 
-    public void setDataConclusion(String dataConclusion) {
-        this.dataConclusion = dataConclusion;
+    public void setDataCompletion(String dataCompletion) {
+        this.dataCompletion = dataCompletion;
     }
 
-    public String getHourConclusion() {
-        return hourConclusion;
+    public String getHourCompletion() {
+        return hourCompletion;
     }
 
-    public void setHourConclusion(String hourConclusion) {
-        this.hourConclusion = hourConclusion;
+    public void setHourCompletion(String hourCompletion) {
+        this.hourCompletion = hourCompletion;
     }
 
     public boolean isActive() {
@@ -78,8 +78,8 @@ public class TodoNode{
                 ", todo='" + todo + '\'' +
                 ", data='" + data + '\'' +
                 ", hour='" + hour + '\'' +
-                ", dataConclusion='" + dataConclusion + '\'' +
-                ", hourConclusion='" + hourConclusion + '\'' +
+                ", dataCompletion='" + dataCompletion + '\'' +
+                ", hourCompletion='" + hourCompletion + '\'' +
                 ", active=" + active +
                 '}';
     }
@@ -96,9 +96,9 @@ public class TodoNode{
         if (todo != null ? !todo.equals(todoNode1.todo) : todoNode1.todo != null) return false;
         if (data != null ? !data.equals(todoNode1.data) : todoNode1.data != null) return false;
         if (hour != null ? !hour.equals(todoNode1.hour) : todoNode1.hour != null) return false;
-        if (dataConclusion != null ? !dataConclusion.equals(todoNode1.dataConclusion) : todoNode1.dataConclusion != null)
+        if (dataCompletion != null ? !dataCompletion.equals(todoNode1.dataCompletion) : todoNode1.dataCompletion != null)
             return false;
-        return hourConclusion != null ? hourConclusion.equals(todoNode1.hourConclusion) : todoNode1.hourConclusion == null;
+        return hourCompletion != null ? hourCompletion.equals(todoNode1.hourCompletion) : todoNode1.hourCompletion == null;
 
     }
 
@@ -108,8 +108,8 @@ public class TodoNode{
         result = 31 * result + (todo != null ? todo.hashCode() : 0);
         result = 31 * result + (data != null ? data.hashCode() : 0);
         result = 31 * result + (hour != null ? hour.hashCode() : 0);
-        result = 31 * result + (dataConclusion != null ? dataConclusion.hashCode() : 0);
-        result = 31 * result + (hourConclusion != null ? hourConclusion.hashCode() : 0);
+        result = 31 * result + (dataCompletion != null ? dataCompletion.hashCode() : 0);
+        result = 31 * result + (hourCompletion != null ? hourCompletion.hashCode() : 0);
         result = 31 * result + (active ? 1 : 0);
         return result;
     }
