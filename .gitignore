@@ -41,6 +41,7 @@ proguard/
 /.idea/dictionaries
 /.idea/libraries
 /.idea/uiDesigner.xml
+/.idea/caches/
 
 # Keystore files
 *.jks
