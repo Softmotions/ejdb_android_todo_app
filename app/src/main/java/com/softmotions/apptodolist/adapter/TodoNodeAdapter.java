@@ -1,5 +1,6 @@
 package com.softmotions.apptodolist.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -40,7 +41,7 @@ public class TodoNodeAdapter extends RecyclerView.Adapter<TodoNodeAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         //Update a view
         TodoNode t = todoNodeList.get(position);
 
