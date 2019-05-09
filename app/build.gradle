@@ -1,6 +1,6 @@
 apply plugin: "com.android.application"
 
-def abiName = "armeabi-v7a"
+def props = rootProject.ext
 
 android {
   compileSdkVersion 25
@@ -13,17 +13,17 @@ android {
     testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     externalNativeBuild {
       cmake {
-        abiFilters abiName
+        abiFilters props.abiName
         targets "ejdb2jni"
         arguments "-DCMAKE_MAKE_PROGRAM=/usr/bin/ninja",
-                  "-DCMAKE_BUILD_TYPE=debug",
+                  "-DCMAKE_BUILD_TYPE=Release",
                   "-DBUILD_JNI_BINDING=ON",
                   "-DENABLE_HTTP=OFF",
                   "-DBUILD_EXAMPLES=OFF",
                   "-DCMAKE_TOOLCHAIN_FILE=$ndkDirectory/build/cmake/android.toolchain.cmake",
-                  "-DANDROID_ABI=$abiName",
+                  "-DANDROID_ABI=${props.abiName}",
                   "-DANDROID_PLATFORM=android-21",
-                  "-DANDROID_NATIVE_API_LEVEL=24"
+                  "-DANDROID_NATIVE_API_LEVEL=21"
       }
     }
   }
@@ -45,17 +45,18 @@ project.afterEvaluate {
     javaPreCompileDebug.dependsOn externalNativeBuildDebug
     externalNativeBuildDebug.doLast {
       copy {
-        from(".externalNativeBuild/cmake/debug/$abiName/src/bindings/ejdb2_jni/src") {
+        from(".externalNativeBuild/cmake/debug/${props.abiName}/src/bindings/ejdb2_jni/src") {
           include "ejdb2jni.jar"
         }
         into "libs"
       }
     }
-  } else if (tasks.findByName("externalNativeBuildRelease")) {
+  }
+  if (tasks.findByName("externalNativeBuildRelease")) {
     javaPreCompileRelease.dependsOn externalNativeBuildRelease
     externalNativeBuildRelease.doLast {
       copy {
-        from(".externalNativeBuild/cmake/release/$abiName/src/bindings/ejdb2_jni/src") {
+        from(".externalNativeBuild/cmake/release/${props.abiName}/src/bindings/ejdb2_jni/src") {
           include "ejdb2jni.jar"
         }
         into "libs"
