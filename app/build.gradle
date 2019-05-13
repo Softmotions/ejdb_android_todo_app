@@ -21,16 +21,10 @@ android {
                   "-DENABLE_HTTP=OFF",
                   "-DBUILD_EXAMPLES=OFF",
                   "-DCMAKE_TOOLCHAIN_FILE=$ndkDirectory/build/cmake/android.toolchain.cmake",
-                  "-DANDROID_ABI=${props.abiName}",
+                  "-DANDROID_ABI=$props.abiName",
                   "-DANDROID_PLATFORM=android-21",
                   "-DANDROID_NATIVE_API_LEVEL=21"
       }
-    }
-  }
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
     }
   }
   externalNativeBuild {
@@ -66,7 +60,7 @@ project.afterEvaluate {
 }
 
 dependencies {
-  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation fileTree(dir: "libs", include: ["*.jar"])
 
   implementation "com.android.support:appcompat-v7:25.1.1"
   implementation "com.android.support:design:25.1.1"

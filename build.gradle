@@ -21,6 +21,14 @@ task clean(type: Delete) {
   delete rootProject.buildDir
 }
 
+Properties properties = new Properties()
+if (project.rootProject.file('local.properties').exists()) {
+  def is = project.rootProject.file('local.properties').newDataInputStream()
+  properties.load(is)
+  is.close()
+}
+
 ext {
-  abiName = "armeabi-v7a"
+  abiName = properties.get("abi.name")
+  externalBuildType = properties.get("external.build.type")
 }
