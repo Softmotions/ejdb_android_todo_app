@@ -30,5 +30,4 @@ if (project.rootProject.file('local.properties').exists()) {
 
 ext {
   abiName = properties.get("abi.name")
-  externalBuildType = properties.get("external.build.type")
 }
