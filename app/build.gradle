@@ -15,7 +15,7 @@ android {
       cmake {
         abiFilters props.abiName
         targets "ejdb2jni"
-        arguments "-DCMAKE_BUILD_TYPE=Debug",
+        arguments "-DCMAKE_BUILD_TYPE=Release",
                   "-DBUILD_JNI_BINDING=ON",
                   "-DENABLE_HTTP=OFF",
                   "-DBUILD_EXAMPLES=OFF",
