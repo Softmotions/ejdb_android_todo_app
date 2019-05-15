@@ -130,7 +130,7 @@ public class DetailActivity extends AppCompatActivity {
                 todoNodeEdited.setHourCompletion(hourActualString);
                 todoNodeEdited.setDataCompletion(dataActualString);
 
-                new TodoDAO().equalsObject(todoNodeEdited);
+                new TodoDAO().updateObject(todoNodeEdited);
 
                 Toast.makeText(getApplicationContext(), "TodoNode successfully completed!", Toast.LENGTH_SHORT).show();
 

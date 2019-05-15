@@ -2,11 +2,9 @@
 
 ### local.properties
 ```properties
-ndk.dir=/home/user/Android/Sdk/ndk-bundle
-sdk.dir=/home/user/Android/Sdk
-cmake.dir=/home/user/.local
+ndk.dir=/path/to/Sdk/ndk-bundle
+sdk.dir=/path/to/Sdk
 
-# project properties
-# external native build target abi name
-abi.name=armeabi-v7a
+# target abi name
+abi.name=arm64-v8a
 ```

@@ -104,7 +104,7 @@ public class EditActivity extends AppCompatActivity {
             case R.id.action_save_item:
                 //saves item
                 Log.d(TAG, "TodoNode edited: " + todoNodeEdited.toString());
-                new TodoDAO().equalsObject(todoNodeEdited);
+                new TodoDAO().updateObject(todoNodeEdited);
                 finish();
                 return true;
         }

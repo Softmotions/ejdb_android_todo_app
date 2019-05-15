@@ -11,38 +11,37 @@ import com.softmotions.ejdb2.EJDB2;
 import com.softmotions.ejdb2.JQL;
 import com.softmotions.ejdb2.JQLCallback;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.*;
 
 public class TodoDAO implements IDao<TodoNode> {
 
     public static final String TAG = "LogX_TodoDao";
-    public static final String TABLE_NAME = "todos";
+    public static final String COLLECTION = "todos";
 
     private EJDB2 ejdb2 = MyApplication.ejdb2;
     private ObjectMapper mapper = MyApplication.mapper;
 
     @Override
     public void setObject(TodoNode todo) {
-        ejdb2.put(TABLE_NAME, mapper.valueToTree(todo).toString());
+        ejdb2.put(COLLECTION, mapper.valueToTree(todo).toString());
     }
 
     @Override
     public void deleteObject(TodoNode object) {
-        ejdb2.del(TABLE_NAME, object.getId());
+        ejdb2.del(COLLECTION, object.getId());
     }
 
     @Override
     public void deleteObjects() {
-        ejdb2.removeCollection(TABLE_NAME);
+        ejdb2.removeCollection(COLLECTION);
     }
 
     @Override
     public void deleteObjectsActive() {
         Collection<TodoNode> todos = getTodoNodes("/[active=:?]", "true");
         for (TodoNode todo : todos) {
-            ejdb2.del(TABLE_NAME, todo.getId());
+            ejdb2.del(COLLECTION, todo.getId());
         }
     }
 
@@ -50,12 +49,15 @@ public class TodoDAO implements IDao<TodoNode> {
     public void deleteObjectsCompleted() {
         Collection<TodoNode> todos = getTodoNodes("/[active=:?]", "false");
         for (TodoNode todo : todos) {
-            ejdb2.del(TABLE_NAME, todo.getId());
+            ejdb2.del(COLLECTION, todo.getId());
         }
     }
 
     @Override
-    public void equalsObject(final TodoNode object) {
+    public void updateObject(final TodoNode object) {
+        // Used JSON patch for demo
+        // Can be replaced by single call
+        // ejdb2.put(COLLECTION, mapper.writeValueAsString(object), object.getId());
         Collection<Patch> patchs = new LinkedList<Patch>();
         patchs.add(new Patch("replace", "/todo", object.getTodo()));
         patchs.add(new Patch("replace", "/data", object.getData()));
@@ -65,7 +67,7 @@ public class TodoDAO implements IDao<TodoNode> {
         patchs.add(new Patch("replace", "/active", Boolean.toString(object.isActive())));
         try {
             String patch = mapper.writeValueAsString(patchs);
-            ejdb2.patch(TABLE_NAME, patch, object.getId());
+            ejdb2.patch(COLLECTION, patch, object.getId());
         } catch (JsonProcessingException e) {
             Log.d(TAG, String.valueOf(e));
         }
@@ -84,11 +86,7 @@ public class TodoDAO implements IDao<TodoNode> {
     @Override
     public TodoNode getObject(long id) {
         try {
-            ByteArrayOutputStream os = new ByteArrayOutputStream();
-            ejdb2.get(TABLE_NAME, id, os);
-            os.flush();
-            os.close();
-            TodoNode node = mapper.readValue(os.toString(), TodoNode.class);
+            TodoNode node = mapper.readValue(ejdb2.getAsString(COLLECTION, id), TodoNode.class);
             node.setId(id);
             return node;
         } catch (IOException e) {
@@ -99,7 +97,7 @@ public class TodoDAO implements IDao<TodoNode> {
 
     private Collection<TodoNode> getTodoNodes(String query, String value) {
         final Map<Long, String> results = new LinkedHashMap<>();
-        JQL q = ejdb2.createQuery(query, TABLE_NAME).setString(0, value);
+        JQL q = ejdb2.createQuery(query, COLLECTION).setString(0, value);
         q.execute(new JQLCallback() {
             @Override
             public long onRecord(long docId, String doc) {

@@ -127,7 +127,7 @@ public class CompletedActivity extends AppCompatActivity {
                                 todoNode.setHourCompletion("Not completed");
                                 todoNode.setDataCompletion("Not completed");
 
-                                new TodoDAO().equalsObject(todoNode);
+                                new TodoDAO().updateObject(todoNode);
 
                                 Toast.makeText(getApplicationContext(), "TodoNode reactivated successfully!", Toast.LENGTH_SHORT).show();
 

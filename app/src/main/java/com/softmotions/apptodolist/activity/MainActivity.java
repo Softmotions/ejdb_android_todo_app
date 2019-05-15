@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements Validator.Validat
                                 todoNode.setHourCompletion(hourActualString);
                                 todoNode.setDataCompletion(dataActualString);
 
-                                new TodoDAO().equalsObject(todoNode);
+                                new TodoDAO().updateObject(todoNode);
 
                                     Toast.makeText(getApplicationContext(), "TodoNode successfully completed!", Toast.LENGTH_SHORT).show();
 
