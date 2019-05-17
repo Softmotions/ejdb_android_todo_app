@@ -30,4 +30,5 @@ if (project.rootProject.file('local.properties').exists()) {
 
 ext {
   abiName = properties.get("abi.name")
+  pathToEjdb = properties.get("ejdb.path")
 }
