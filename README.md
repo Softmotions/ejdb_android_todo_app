@@ -6,8 +6,9 @@ Project uses ejdb2, clone lib from https://github.com/Softmotions/ejdb.git
 
 ### Setup
 
-1. Open SDK Manager and install LLDB, CMake (version >= 3.10),NDK.
-2. Provide ninja, add /path/to/Sdk/cmake/version/bin to PATH
+1. Open SDK Manager and install LLDB, CMake (version >= 3.10), NDK.
+2. Provide ninja, add /path/to/Sdk/cmake/version/bin to system property PATH
+3. Set ANDROID_NDK_HOME="/path/to/Sdk/ndk-bundle" system property
 
 ### Create local.properties
 ```properties
@@ -25,6 +26,7 @@ ejdb.path=path/to/ejdb/CMakeLists.txt
 or
 ./gradlew assembleRelease
 ```
+
 ### Install to connected device
 ```bash
 ./gradlew installDebug
