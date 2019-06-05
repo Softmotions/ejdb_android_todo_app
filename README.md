@@ -4,11 +4,9 @@
 
 ### Setup
 
-Init ejdb2 submodule, run git command
-```
-git submodule update --init
-```
-Open SDK Manager and install LLDB, CMake (version >= 3.10), NDK.
+1. Init ejdb2 submodule, run git command `git submodule update --init`
+2. Open SDK Manager and install LLDB, CMake (version >= 3.10), NDK.
+3. Install ninja build tool
 
 ### Create local.properties
 ```properties
