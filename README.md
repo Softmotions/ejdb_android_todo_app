@@ -6,19 +6,19 @@
 
 Init ejdb2 submodule, run git command
 ```
-git submodule init
-git submodule update
+git submodule update --init
 ```
-1. Open SDK Manager and install LLDB, CMake (version >= 3.10), NDK.
-2. Provide cmake dir, add /path/to/Sdk/cmake/version/bin to system property PATH
-3. Set ANDROID_NDK_HOME="/path/to/Sdk/ndk-bundle" system property
+Open SDK Manager and install LLDB, CMake (version >= 3.10), NDK.
 
 ### Create local.properties
 ```properties
+# Path to Android SDK dir
 ndk.dir=/path/to/Sdk/ndk-bundle
+
+# Path to Android NDK dir
 sdk.dir=/path/to/Sdk
 
-# target abi name
+# Target abi name: armeabi-v7a, arm64-v8a, x86, x86_64
 abi.name=arm64-v8a
 ```
 
