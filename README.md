@@ -1,4 +1,4 @@
-# AppToDoList
+# EJDB TODO APP
 
 ## Build and start
 
