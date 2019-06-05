@@ -28,7 +28,7 @@ android {
   }
   externalNativeBuild {
     cmake {
-      path props.pathToEjdb
+      path "../ejdb2/CMakeLists.txt"
     }
   }
 }

@@ -2,12 +2,15 @@
 
 ## Build and start
 
-Project uses ejdb2, clone lib from https://github.com/Softmotions/ejdb.git
-
 ### Setup
 
+Init ejdb2 submodule, run git command
+```
+git submodule init
+git submodule update
+```
 1. Open SDK Manager and install LLDB, CMake (version >= 3.10), NDK.
-2. Provide ninja, add /path/to/Sdk/cmake/version/bin to system property PATH
+2. Provide cmake dir, add /path/to/Sdk/cmake/version/bin to system property PATH
 3. Set ANDROID_NDK_HOME="/path/to/Sdk/ndk-bundle" system property
 
 ### Create local.properties
@@ -17,7 +20,6 @@ sdk.dir=/path/to/Sdk
 
 # target abi name
 abi.name=arm64-v8a
-ejdb.path=path/to/ejdb/CMakeLists.txt
 ```
 
 ### Assemble apk
