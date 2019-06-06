@@ -2,6 +2,8 @@
 
 EJDB2 Android demo apllication
 
+![screen1](./screens/screen1.png)
+
 ## Setup
 
 1. Init ejdb2 submodule, run git command
