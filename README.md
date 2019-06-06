@@ -1,6 +1,4 @@
-# EJDB TODO APP
-
-EJDB2 Android demo apllication
+# EJDB todolist sample application
 
 ![screen1](./screens/screen1.png)
 
